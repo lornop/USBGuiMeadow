@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace USBGuiMeadow
 {
@@ -56,12 +57,52 @@ namespace USBGuiMeadow
 
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            throw new NotImplementedException();
+            string text = serialPort.ReadLine();
+            //txtRecieved.Text = text;
+
+            if (txtRecieved.Dispatcher.CheckAccess())
+            {
+                UpdateUI(text);
+            }
+            else
+            {
+                txtRecieved.Dispatcher.Invoke(() => { UpdateUI(text); });
+            }
+
+        }
+
+        private void UpdateUI(string newPacket)
+        {
+            if (checkBoxHistory.IsChecked == true)
+            {
+                txtRecieved.Text = newPacket + txtRecieved.Text;
+            }
+            else
+            {
+                txtRecieved.Text = newPacket;
+            }
+
+            
         }
 
         private void btnOpenClose_Click(object sender, RoutedEventArgs e)
         {
+            if(!bPortOpen)
+            {
+                serialPort.PortName = comboBox1.Text;
+                serialPort.Open();
+                btnOpenClose.Content = "Close";
+                bPortOpen = true;
 
+            }
+
+            else
+            {
+                serialPort.Close();
+                btnOpenClose.Content = "Open";
+                bPortOpen = false;
+
+            }
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
