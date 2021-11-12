@@ -1,0 +1,34 @@
+﻿<Window x:Class="USBGuiMeadow.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:USBGuiMeadow"
+        mc:Ignorable="d"
+        Title="USB Meadow" Height="450" Width="800">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="btnOpenClose" Content="Open" Click="btnOpenClose_Click"/>
+            <Button x:Name="btnClear" Content="Clear" Click="btnClear_Click"/>
+            <ComboBox x:Name="comboBox1" Width="60" MouseEnter="comboBox1_MouseEnter"/>
+        </StackPanel>
+        <StackPanel>
+            <Label>Send Packet</Label>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btnSend" Content="Send" Click="btnSend_Click"/>
+                <TextBox x:Name="txtSend" Width="90" Text="###1111196"
+                           TextChanged="txtSend_TextChanged"/>
+                
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>Recieved</Label>
+                <CheckBox x:Name="checkBoxHistory" Content="History"
+                          VerticalAlignment="Center"/>
+            </StackPanel>
+            <TextBox x:Name="txtRecieved" TextWrapping="Wrap" Height="Auto"
+                     MaxHeight="260" VerticalScrollBarVisibility="Auto"/>
+            
+
+        </StackPanel>
+    </StackPanel>
+</Window>
