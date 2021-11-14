@@ -124,6 +124,7 @@ namespace USBGuiMeadow
                     {
                         calChkSum += (byte)newPacket[i];
                     }
+                    calChkSum %= 1000;  //To get the last threee digits like in the recieved protocol
 
 
                     //txtCalChkSum.Length sumthng sumthing == 3; for the stuff to add up correctly 
