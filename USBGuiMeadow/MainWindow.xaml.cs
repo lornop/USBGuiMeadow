@@ -74,6 +74,18 @@ namespace USBGuiMeadow
 
         private void UpdateUI(string newPacket)
         {
+            
+            //Function that calculates the current index for reading Chars from the data stream
+            int i = 0;
+            int nextIndex(int a, int l) //l is the length of the current word being read. 
+            {
+                i += l;
+                return (i);
+            }
+            // Returns the index i after the previous index is added to the word length. 
+
+
+
             if (checkBoxHistory.IsChecked == true)
             {
                 txtRecieved.Text = newPacket + txtRecieved.Text;
@@ -87,33 +99,25 @@ namespace USBGuiMeadow
             if (newPacket.Length > 37)
             {
 
-                int i = 0;  //start index reading at 0
+                i = 0;  //start index reading at 0
                 int l = 3;  //packet length is 3 chars
                 if (newPacket.Substring(i, l) == "###")
                 {
-                    i += l;
-                    txtPacketNum.Text = newPacket.Substring(i, l);
-                    i += l;
+                    txtPacketNum.Text = newPacket.Substring((nextIndex(i,l)), l);
+                    
                     newPacketNumber = Convert.ToInt32(txtPacketNum.Text);
 
                     l = 4;  //Analog ins are 4 chars each
-                    txtAN0.Text = newPacket.Substring(i, l);
-                    i += l;
-                    txtAN1.Text = newPacket.Substring(i, l);
-                    i += l;
-                    txtAN2.Text = newPacket.Substring(i, l);
-                    i += l;
-                    txtAN3.Text = newPacket.Substring(i, l);
-                    i += l;
-                    txtAN4.Text = newPacket.Substring(i, l);
-                    i += l;
-                    txtAN5.Text = newPacket.Substring(i, l);
-                    i += l;
-                    txtBIN.Text = newPacket.Substring(i, l);
-                    i += l;
+                    txtAN0.Text = newPacket.Substring((nextIndex(i, l)), l);
+                    txtAN1.Text = newPacket.Substring((nextIndex(i, l)), l);
+                    txtAN2.Text = newPacket.Substring((nextIndex(i, l)), l);
+                    txtAN3.Text = newPacket.Substring((nextIndex(i, l)), l);
+                    txtAN4.Text = newPacket.Substring((nextIndex(i, l)), l);
+                    txtAN5.Text = newPacket.Substring((nextIndex(i, l)), l);
+                    txtBIN.Text = newPacket.Substring((nextIndex(i, l)), l);
 
                     l = 3;  //Checksum is the last 3 digits. Shouldnt reallly need this but just in case we add to the protocol ....
-                    txtRXChkSum.Text = newPacket.Substring(i, l);
+                    txtRXChkSum.Text = newPacket.Substring((nextIndex(i, l)), l);
 
                     for (i = 3; i < 34; i++)
                     {
@@ -130,15 +134,20 @@ namespace USBGuiMeadow
                     {
                         DisplaySolarData(newPacket);
                     }
+
                     else
                     {
                         chkSumError++;
                         txtChkSumError.Text = Convert.ToString(chkSumError);           
                     }
                 }
+
+
+
             }
             
         }
+
 
         private void DisplaySolarData(string newPacket)
         {
