@@ -79,8 +79,8 @@ namespace USBGuiMeadow
             int i = 0;
             int nextIndex(int a, int l) //l is the length of the current word being read. 
             {
-                i += l;
-                return (i);
+                i += l;     //Increment the index for the next time this is called. 
+                return a;   //Return the index we recieved from the previous time this was called. 
             }
             // Returns the index i after the previous index is added to the word length. 
 
@@ -101,13 +101,14 @@ namespace USBGuiMeadow
 
                 i = 0;  //start index reading at 0
                 int l = 3;  //packet length is 3 chars
-                if (newPacket.Substring(i, l) == "###")
+                if (newPacket.Substring((nextIndex(i, l)), l) == "###")
                 {
-                    txtPacketNum.Text = newPacket.Substring((nextIndex(i,l)), l);
+                    txtPacketNum.Text = newPacket.Substring((nextIndex(i, l)), l);
                     
                     newPacketNumber = Convert.ToInt32(txtPacketNum.Text);
 
                     l = 4;  //Analog ins are 4 chars each
+
                     txtAN0.Text = newPacket.Substring((nextIndex(i, l)), l);
                     txtAN1.Text = newPacket.Substring((nextIndex(i, l)), l);
                     txtAN2.Text = newPacket.Substring((nextIndex(i, l)), l);
@@ -141,11 +142,7 @@ namespace USBGuiMeadow
                         txtChkSumError.Text = Convert.ToString(chkSumError);           
                     }
                 }
-
-
-
             }
-            
         }
 
 
