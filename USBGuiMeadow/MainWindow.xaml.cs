@@ -24,6 +24,7 @@ namespace USBGuiMeadow
     {
 
         private bool bPortOpen = false;
+        private int newPacketNumber, chkSumError = 0;
 
         SerialPort serialPort = new SerialPort();
 
@@ -81,8 +82,67 @@ namespace USBGuiMeadow
             {
                 txtRecieved.Text = newPacket;
             }
+            txtPacketLength.Text = newPacket.Length.ToString();
+            int calChkSum = 0;
+            if (newPacket.Length > 37)
+            {
 
+                int i = 0;  //start index reading at 0
+                int l = 3;  //packet length is 3 chars
+                if (newPacket.Substring(i, l) == "###")
+                {
+                    i += l;
+                    txtPacketNum.Text = newPacket.Substring(i, l);
+                    i += l;
+                    newPacketNumber = Convert.ToInt32(txtPacketNum.Text);
+
+                    l = 4;  //Analog ins are 4 chars each
+                    txtAN0.Text = newPacket.Substring(i, l);
+                    i += l;
+                    txtAN1.Text = newPacket.Substring(i, l);
+                    i += l;
+                    txtAN2.Text = newPacket.Substring(i, l);
+                    i += l;
+                    txtAN3.Text = newPacket.Substring(i, l);
+                    i += l;
+                    txtAN4.Text = newPacket.Substring(i, l);
+                    i += l;
+                    txtAN5.Text = newPacket.Substring(i, l);
+                    i += l;
+                    txtBIN.Text = newPacket.Substring(i, l);
+                    i += l;
+
+                    l = 3;  //Checksum is the last 3 digits. Shouldnt reallly need this but just in case we add to the protocol ....
+                    txtRXChkSum.Text = newPacket.Substring(i, l);
+
+                    for (i = 3; i < 34; i++)
+                    {
+                        calChkSum += (byte)newPacket[i];
+                    }
+
+
+                    //txtCalChkSum.Length sumthng sumthing == 3; for the stuff to add up correctly 
+                    //recieved checkum is only last 3 digits
+
+                    txtCalChkSum.Text = Convert.ToString(calChkSum);
+                    int recChkSum = Convert.ToInt32(newPacket.Substring(34, 3));
+                    if (recChkSum == calChkSum)
+                    {
+                        DisplaySolarData(newPacket);
+                    }
+                    else
+                    {
+                        chkSumError++;
+                        txtChkSumError.Text = Convert.ToString(chkSumError);           
+                    }
+                }
+            }
             
+        }
+
+        private void DisplaySolarData(string newPacket)
+        {
+            //TODO List to display solar data
         }
 
         private void btnOpenClose_Click(object sender, RoutedEventArgs e)

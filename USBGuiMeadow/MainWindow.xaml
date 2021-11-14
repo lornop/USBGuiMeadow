@@ -7,23 +7,27 @@
         mc:Ignorable="d"
         Title="USB Meadow" Height="450" Width="800">
     <StackPanel Orientation="Horizontal">
-        <StackPanel>
+        <StackPanel Margin="10">
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="btnOpenClose" Content="Open" Click="btnOpenClose_Click"/>
                 <Button x:Name="btnClear" Content="Clear" Click="btnClear_Click"/>
-                <ComboBox x:Name="comboBox1" Width="60" MouseEnter="comboBox1_MouseEnter"/>
+                <ComboBox x:Name="comboBox1" Width="65" MouseEnter="comboBox1_MouseEnter"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Margin="0">Errors</Label>
+                <TextBox x:Name="txtChkSumError" Width="65"/>
             </StackPanel>
         </StackPanel>
 
-        <StackPanel>
+        <StackPanel Margin="0">
 
-            <Label Width="65">Packet</Label>
+            <Label Width="65" Margin="10">Packet</Label>
             <StackPanel Orientation="Horizontal">
-                <Label Width="65">Number</Label>
-                <TextBox x:Name="txtPacketNum" Width="60"/>
+                <Label Width="65" >Number</Label>
+                <TextBox x:Name="txtPacketNum" Width="65"/>
             </StackPanel>
 
-            <Label Width="65">Recieved</Label>
+            <Label Width="65" Margin="5">Recieved</Label>
             <StackPanel Orientation="Horizontal">
                 <Label Width="65">Length</Label>
                 <TextBox x:Name="txtPacketLength" Width="65"/>
@@ -57,7 +61,7 @@
                 <TextBox x:Name="txtBIN" Width="65"/>
             </StackPanel>
 
-            <Label Width="65">Checksum</Label>
+            <Label Width="65" Margin="5">Checksum</Label>
             <StackPanel Orientation="Horizontal">
                 <Label Width="65">Recieved</Label>
                 <TextBox x:Name="txtRXChkSum" Width="65"/>
@@ -68,7 +72,7 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel>
+        <StackPanel Margin="10">
             <StackPanel>
                 <Label>Send Packet</Label>
 
