@@ -6,28 +6,87 @@
         xmlns:local="clr-namespace:USBGuiMeadow"
         mc:Ignorable="d"
         Title="USB Meadow" Height="450" Width="800">
-    <StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <Button x:Name="btnOpenClose" Content="Open" Click="btnOpenClose_Click"/>
-            <Button x:Name="btnClear" Content="Clear" Click="btnClear_Click"/>
-            <ComboBox x:Name="comboBox1" Width="60" MouseEnter="comboBox1_MouseEnter"/>
-        </StackPanel>
+    <StackPanel Orientation="Horizontal">
         <StackPanel>
-            <Label>Send Packet</Label>
             <StackPanel Orientation="Horizontal">
-                <Button x:Name="btnSend" Content="Send" Click="btnSend_Click"/>
-                <TextBox x:Name="txtSend" Width="90" Text="###1111196"
+                <Button x:Name="btnOpenClose" Content="Open" Click="btnOpenClose_Click"/>
+                <Button x:Name="btnClear" Content="Clear" Click="btnClear_Click"/>
+                <ComboBox x:Name="comboBox1" Width="60" MouseEnter="comboBox1_MouseEnter"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel>
+
+            <Label Width="65">Packet</Label>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="65">Number</Label>
+                <TextBox x:Name="txtPacketNum" Width="60"/>
+            </StackPanel>
+
+            <Label Width="65">Recieved</Label>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="65">Length</Label>
+                <TextBox x:Name="txtPacketLength" Width="65"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="65">Analog 0</Label>
+                <TextBox x:Name="txtAN0" Width="65"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="65">Analog 1</Label>
+                <TextBox x:Name="txtAN1" Width="65"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="65">Analog 2</Label>
+                <TextBox x:Name="txtAN2" Width="65"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="65">Analog 3</Label>
+                <TextBox x:Name="txtAN3" Width="65"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="65">Analog 4</Label>
+                <TextBox x:Name="txtAN4" Width="65"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="65">Analog 5</Label>
+                <TextBox x:Name="txtAN5" Width="65"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="65">Binary</Label>
+                <TextBox x:Name="txtBIN" Width="65"/>
+            </StackPanel>
+
+            <Label Width="65">Checksum</Label>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="65">Recieved</Label>
+                <TextBox x:Name="txtRXChkSum" Width="65"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="65">Calculated</Label>
+                <TextBox x:Name="txtCalChkSum" Width="65"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel>
+            <StackPanel>
+                <Label>Send Packet</Label>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="btnSend" Content="Send" Click="btnSend_Click"/>
+                    <TextBox x:Name="txtSend" Width="90" Text="###1111196"
                            TextChanged="txtSend_TextChanged"/>
-                
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label>Recieved</Label>
-                <CheckBox x:Name="checkBoxHistory" Content="History"
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label>Recieved</Label>
+                    <CheckBox x:Name="checkBoxHistory" Content="History"
                           VerticalAlignment="Center"/>
-            </StackPanel>
-            <TextBox x:Name="txtRecieved" TextWrapping="Wrap" Height="Auto"
+                </StackPanel>
+
+                <TextBox x:Name="txtRecieved" TextWrapping="Wrap" Height="Auto"
                      MaxHeight="260" VerticalScrollBarVisibility="Auto"/>
-            
+            </StackPanel>
 
         </StackPanel>
     </StackPanel>
