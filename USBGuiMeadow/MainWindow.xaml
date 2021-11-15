@@ -14,8 +14,8 @@
                 <ComboBox x:Name="comboBox1" Width="65" MouseEnter="comboBox1_MouseEnter"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Margin="0">Errors</Label>
-                <TextBox x:Name="txtChkSumError" Width="65"/>
+                <Label Margin="0" VerticalAlignment="Center">Errors</Label>
+                <TextBox x:Name="txtChkSumError" Width="65" VerticalAlignment="Center"/>
             </StackPanel>
         </StackPanel>
 
@@ -24,7 +24,7 @@
             <Label Width="65" Margin="10">Packet</Label>
             <StackPanel Orientation="Horizontal">
                 <Label Width="65" >Number</Label>
-                <TextBox x:Name="txtPacketNum" Width="65"/>
+                <TextBox x:Name="txtPacketNum" VerticalAlignment="Center" Width="65"/>
             </StackPanel>
 
             <Label Width="65" Margin="5">Recieved</Label>
@@ -78,8 +78,13 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="btnSend" Content="Send" Click="btnSend_Click"/>
-                    <TextBox x:Name="txtSend" Width="90" Text="###1111196"
-                           TextChanged="txtSend_TextChanged"/>
+                    <TextBox x:Name="txtSend" Width="90" Text="###1111196" VerticalAlignment="Center"
+                             IsEnabled="False" TextChanged="txtSend_TextChanged"/>
+                    <Label>Bits</Label>
+                    <Button x:Name="btnBit0" Content="1" Click="btnBit0_Click"/>
+                    <Button x:Name="btnBit1" Content="1" Click="btnBit1_Click"/>
+                    <Button x:Name="btnBit2" Content="1" Click="btnBit2_Click"/>
+                    <Button x:Name="btnBit3" Content="1" Click="btnBit3_Click"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">

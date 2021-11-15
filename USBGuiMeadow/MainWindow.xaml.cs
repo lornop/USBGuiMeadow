@@ -28,6 +28,8 @@ namespace USBGuiMeadow
 
         SerialPort serialPort = new SerialPort();
 
+        StringBuilder stringBuilderSend = new StringBuilder("###1111196");
+
 
         public MainWindow()
         {
@@ -126,10 +128,6 @@ namespace USBGuiMeadow
                     }
                     calChkSum %= 1000;  //To get the last threee digits like in the recieved protocol
 
-
-                    //txtCalChkSum.Length sumthng sumthing == 3; for the stuff to add up correctly 
-                    //recieved checkum is only last 3 digits
-
                     txtCalChkSum.Text = Convert.ToString(calChkSum);
                     int recChkSum = Convert.ToInt32(newPacket.Substring(34, 3));
                     if (recChkSum == calChkSum)
@@ -172,10 +170,7 @@ namespace USBGuiMeadow
             }
         }
 
-        private void btnClear_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
 
         private void comboBox1_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -185,12 +180,85 @@ namespace USBGuiMeadow
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
+            sendPacket();
+        }
+
+        private void sendPacket()
+        {
+            try
+            {
+                int txChkSum = 0;
+                for (int i = 3; i < 7; i++)
+                {
+                    txChkSum += (byte)stringBuilderSend[i];
+                }
+                txChkSum %= 1000;
+                stringBuilderSend.Remove(7, 3);
+                stringBuilderSend.Insert(7, txChkSum.ToString("D3"));
+                txtSend.Text = stringBuilderSend.ToString();
+
+
+                string messageOut = stringBuilderSend.ToString();
+
+                messageOut += "\r\n";                   //add CR and LF
+                byte[] messageBytes = Encoding.UTF8.GetBytes(messageOut);   //Convert the textbox to an array of bytes(UTF8)
+                serialPort.Write(messageBytes, 0, messageBytes.Length);     //Write to the serial port the bytes, 0 offset, how many bytes are in the array
+            }
+
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
 
         }
 
         private void txtSend_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
 
+        }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            txtRecieved.Clear();
+        }
+
+        private void btnBit3_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonClicked(3);
+        }
+
+        private void btnBit2_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonClicked(2);
+        }
+
+        private void btnBit1_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonClicked(1);
+        }
+
+        private void btnBit0_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonClicked(0);
+        }
+
+        private void ButtonClicked(int v)
+        {
+            Button[] btnBit = new Button[] { btnBit0, btnBit1, btnBit2, btnBit3 };
+            if (btnBit[v].Content.ToString() == "0")
+            {
+                btnBit[v].Content = "1";
+                stringBuilderSend[v + 3] = '1';
+
+            }
+            else
+            {
+                btnBit[v].Content = "0";
+                stringBuilderSend[v + 3] = '0';
+            }
+
+            sendPacket();
         }
 
         private void txtSend_TextChanged(object sender, TextChangedEventArgs e)
