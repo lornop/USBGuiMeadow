@@ -168,20 +168,9 @@ namespace USBGuiMeadow
             {
                 ButtonClicked(1, 0);
             }
-            string txtSolarVol = Convert.ToString(solarVoltage);
-            int l = txtSolarVol.Length;
-            if (l < 5)
-            {
-                l = txtSolarVol.Length;
-            }
-            else
-            {
-                l = 5;
-            }
-            txtSolarVoltage.Text = txtSolarVol.Substring(0, l);
 
-            
-
+            string txtSolarVol = solarVoltage.ToString("0.000");
+            txtSolarVoltage.Text = txtSolarVol;
         }
 
         private void btnOpenClose_Click(object sender, RoutedEventArgs e)
