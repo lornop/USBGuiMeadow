@@ -308,9 +308,6 @@ namespace USBGuiMeadow
                 }
             }
 
-
-
-
             sendPacket();
         }
 
