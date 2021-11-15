@@ -31,6 +31,11 @@
                 <TextBox x:Name="txtChkSumError" Width="90" VerticalAlignment="Center"/>
             </StackPanel>
 
+            <StackPanel Orientation="Horizontal">
+                <Label VerticalAlignment="Center">Solar Voltage</Label>
+                <TextBox x:Name="txtSolarVoltage" Width="50" VerticalAlignment="center"/>
+            </StackPanel>
+
         </StackPanel>
 
         <StackPanel Margin="0">

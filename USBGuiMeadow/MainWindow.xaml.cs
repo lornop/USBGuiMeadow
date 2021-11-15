@@ -118,8 +118,8 @@ namespace USBGuiMeadow
 
                     l = 4;  //Analog ins are 4 chars each
 
-                    txtAN0.Text = newPacket.Substring((nextIndex(i, l)), l);
-                    txtAN1.Text = newPacket.Substring((nextIndex(i, l)), l);
+                    txtAN0.Text = newPacket.Substring((nextIndex(i, l)), l);    //Thermistor
+                    txtAN1.Text = newPacket.Substring((nextIndex(i, l)), l);    //Solar Panel
                     txtAN2.Text = newPacket.Substring((nextIndex(i, l)), l);
                     txtAN3.Text = newPacket.Substring((nextIndex(i, l)), l);
                     txtAN4.Text = newPacket.Substring((nextIndex(i, l)), l);
@@ -155,6 +155,33 @@ namespace USBGuiMeadow
         private void DisplaySolarData(string newPacket)
         {
             //TODO List to display solar data
+            //Hooked to A1
+            int solarADCValue = Convert.ToInt32(txtAN1.Text);
+            double solarVoltage = 0;
+
+            solarVoltage = 5.5 / (3300 / solarADCValue);
+            if (solarVoltage >= 2.75)
+            {
+                ButtonClicked(1, 1);
+            }
+            else
+            {
+                ButtonClicked(1, 0);
+            }
+            string txtSolarVol = Convert.ToString(solarVoltage);
+            int l = txtSolarVol.Length;
+            if (l < 5)
+            {
+                l = txtSolarVol.Length;
+            }
+            else
+            {
+                l = 5;
+            }
+            txtSolarVoltage.Text = txtSolarVol.Substring(0, l);
+
+            
+
         }
 
         private void btnOpenClose_Click(object sender, RoutedEventArgs e)
@@ -232,38 +259,57 @@ namespace USBGuiMeadow
 
         private void btnBit3_Click(object sender, RoutedEventArgs e)
         {
-            ButtonClicked(3);
+            ButtonClicked(3, 3);
         }
 
         private void btnBit2_Click(object sender, RoutedEventArgs e)
         {
-            ButtonClicked(2);
+            ButtonClicked(2, 3);
         }
 
         private void btnBit1_Click(object sender, RoutedEventArgs e)
         {
-            ButtonClicked(1);
+            ButtonClicked(1, 3);
         }
 
         private void btnBit0_Click(object sender, RoutedEventArgs e)
         {
-            ButtonClicked(0);
+            ButtonClicked(0, 3);
         }
 
-        private void ButtonClicked(int v)
+        private void ButtonClicked(int v, int state)                //States are 0 = off, 1 = On and 3 = toggle
         {
             Button[] btnBit = new Button[] { btnBit0, btnBit1, btnBit2, btnBit3 };
-            if (btnBit[v].Content.ToString() == "0")
-            {
-                btnBit[v].Content = "1";
-                stringBuilderSend[v + 3] = '1';
-
-            }
-            else
+            
+            if (state == 0)
             {
                 btnBit[v].Content = "0";
                 stringBuilderSend[v + 3] = '0';
             }
+            
+            if (state == 1)
+            {
+                btnBit[v].Content = "1";
+                stringBuilderSend[v + 3] = '1';
+            }
+            
+            if (state == 3)
+            {
+                if (btnBit[v].Content.ToString() == "0")
+                {
+                    btnBit[v].Content = "1";
+                    stringBuilderSend[v + 3] = '1';
+
+                }
+                else
+                {
+                    btnBit[v].Content = "0";
+                    stringBuilderSend[v + 3] = '0';
+                }
+            }
+
+
+
 
             sendPacket();
         }
