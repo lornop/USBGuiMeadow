@@ -13,19 +13,29 @@
                 <Button x:Name="btnClear" Content="Clear" Click="btnClear_Click"/>
                 <ComboBox x:Name="comboBox1" Width="65" MouseEnter="comboBox1_MouseEnter"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label Margin="0" VerticalAlignment="Center">Errors</Label>
-                <TextBox x:Name="txtChkSumError" Width="65" VerticalAlignment="Center"/>
-            </StackPanel>
-        </StackPanel>
+            
 
-        <StackPanel Margin="0">
-
-            <Label Width="65" Margin="10">Packet</Label>
+            <Label Width="65" Margin="0" HorizontalAlignment="Center">Packet</Label>
             <StackPanel Orientation="Horizontal">
                 <Label Width="65" >Number</Label>
                 <TextBox x:Name="txtPacketNum" VerticalAlignment="Center" Width="65"/>
             </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Width="65" >OverFlow</Label>
+                <TextBox x:Name="txtOverFlow" VerticalAlignment="Center" Width="65"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Margin="0" VerticalAlignment="Center">Errors</Label>
+                <TextBox x:Name="txtChkSumError" Width="90" VerticalAlignment="Center"/>
+            </StackPanel>
+
+        </StackPanel>
+
+        <StackPanel Margin="0">
+
+
 
             <Label Width="65" Margin="5">Recieved</Label>
             <StackPanel Orientation="Horizontal">
@@ -80,12 +90,15 @@
                     <Button x:Name="btnSend" Content="Send" Click="btnSend_Click"/>
                     <TextBox x:Name="txtSend" Width="90" Text="###1111196" VerticalAlignment="Center"
                              IsEnabled="False" TextChanged="txtSend_TextChanged"/>
-                    <Label>Bits</Label>
-                    <Button x:Name="btnBit0" Content="1" Click="btnBit0_Click"/>
-                    <Button x:Name="btnBit1" Content="1" Click="btnBit1_Click"/>
-                    <Button x:Name="btnBit2" Content="1" Click="btnBit2_Click"/>
-                    <Button x:Name="btnBit3" Content="1" Click="btnBit3_Click"/>
                 </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                        <Label>Bits</Label>
+                        <Button x:Name="btnBit0" Content="1" Click="btnBit0_Click" Background="Yellow" Width="20"/>
+                    <Button x:Name="btnBit1" Content="1" Click="btnBit1_Click" Background="IndianRed" Width="20"/>
+                    <Button x:Name="btnBit2" Content="1" Click="btnBit2_Click" Background="Green" Width="20"/>
+                    <Button x:Name="btnBit3" Content="1" Click="btnBit3_Click" Background="CornflowerBlue" Width="20"/>
+                    </StackPanel>
+                
 
                 <StackPanel Orientation="Horizontal">
                     <Label>Recieved</Label>

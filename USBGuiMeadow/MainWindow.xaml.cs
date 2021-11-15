@@ -24,7 +24,7 @@ namespace USBGuiMeadow
     {
 
         private bool bPortOpen = false;
-        private int newPacketNumber, chkSumError = 0;
+        private int newPacketNumber, chkSumError, OverFlowNumber = 0;
 
         SerialPort serialPort = new SerialPort();
 
@@ -100,12 +100,19 @@ namespace USBGuiMeadow
             int calChkSum = 0;
             if (newPacket.Length > 37)
             {
-
+                
                 i = 0;  //start index reading at 0
                 int l = 3;  //packet length is 3 chars
                 if (newPacket.Substring((nextIndex(i, l)), l) == "###")
                 {
                     txtPacketNum.Text = newPacket.Substring((nextIndex(i, l)), l);
+                    int numberPackets = Convert.ToInt32(txtPacketNum.Text);
+                    
+                    if (numberPackets == 999)
+                    {
+                        OverFlowNumber++;
+                        txtOverFlow.Text = Convert.ToString(OverFlowNumber);
+                    }
                     
                     newPacketNumber = Convert.ToInt32(txtPacketNum.Text);
 
