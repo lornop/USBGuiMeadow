@@ -154,12 +154,12 @@ namespace USBGuiMeadow
 
         private void DisplaySolarData(string newPacket)
         {
-            //TODO List to display solar data
-            //Hooked to A1
             int solarADCValue = Convert.ToInt32(txtAN1.Text);
             double solarVoltage = 0;
 
-            solarVoltage = 5.5 / (3300 / solarADCValue);
+            //solarVoltage = 5.5 / (3300 / solarADCValue);          //Test this to find math ????
+
+            solarVoltage = solarADCValue / 3300;                    //needs testing to comnfirm math stuff
             if (solarVoltage >= 2.75)
             {
                 ButtonClicked(1, 1);
