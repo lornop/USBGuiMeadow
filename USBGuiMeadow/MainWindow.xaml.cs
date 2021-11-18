@@ -18,6 +18,10 @@ using System.Windows.Threading;
 namespace USBGuiMeadow
 {
     /// <summary>
+    /// Loren Olsen
+    /// Nov 18 2021
+    /// ECET 230 
+    /// Solar Panel and LED Control via USB serial protocol
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
@@ -157,16 +161,16 @@ namespace USBGuiMeadow
             int solarADCValue = Convert.ToInt32(txtAN1.Text);
             double solarVoltage = 0;
 
-            //solarVoltage = 5.5 / (3300 / solarADCValue);          //Test this to find math ????
+            solarVoltage = 5.5 / (3300.00 / solarADCValue);          //Test this to find math ????
 
-            solarVoltage = solarADCValue / 3300;                    //needs testing to comnfirm math stuff
-            if (solarVoltage >= 2.75)
+            //solarVoltage = 5.5 / (solarADCValue / 3300);
+            if (solarVoltage >= 1.50)
             {
-                ButtonClicked(1, 1);
+                ButtonClicked(0, 1);
             }
             else
             {
-                ButtonClicked(1, 0);
+                ButtonClicked(0, 0);
             }
 
             string txtSolarVol = solarVoltage.ToString("0.000");
