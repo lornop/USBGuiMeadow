@@ -152,6 +152,12 @@ namespace USBGuiMeadow
                         txtChkSumError.Text = Convert.ToString(chkSumError);           
                     }
                 }
+                else
+                {
+                    chkSumError++;
+                    txtChkSumError.Text = Convert.ToString(chkSumError);
+                }
+                
             }
         }
 
@@ -162,8 +168,9 @@ namespace USBGuiMeadow
             double solarVoltage = 0;
 
             solarVoltage = 5.5 / (3300.00 / solarADCValue);          //Test this to find math ????
-
             //solarVoltage = 5.5 / (solarADCValue / 3300);
+
+
             if (solarVoltage >= 1.50)
             {
                 ButtonClicked(0, 1);

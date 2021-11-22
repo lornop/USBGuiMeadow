@@ -28,7 +28,7 @@
 
             <StackPanel Orientation="Horizontal">
                 <Label Margin="0" VerticalAlignment="Center">Errors</Label>
-                <TextBox x:Name="txtChkSumError" Width="90" VerticalAlignment="Center"/>
+                <TextBox x:Name="txtChkSumError" Width="65" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="24,0,0,0"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
