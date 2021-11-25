@@ -13,7 +13,7 @@
                 <Button x:Name="btnClear" Content="Clear" Click="btnClear_Click"/>
                 <ComboBox x:Name="comboBox1" Width="65" MouseEnter="comboBox1_MouseEnter"/>
             </StackPanel>
-            
+
 
             <Label Width="65" Margin="0" HorizontalAlignment="Center">Packet</Label>
             <StackPanel Orientation="Horizontal">
@@ -34,37 +34,33 @@
 
             <Label Width="65" Margin="0" HorizontalAlignment="Center">Voltage</Label>
 
-            <StackPanel Orientation="Horizontal">
-                <Label VerticalAlignment="Center">Solar Voltage</Label>
-                <TextBox x:Name="txtSolarVoltage" Width="50" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                <Label VerticalAlignment="Center" Content="Solar Voltage"/>
+                <TextBox x:Name="txtSolarVoltage" VerticalAlignment="center" Width="65"/>
+
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
-                <Label VerticalAlignment="Center">Capacitor Voltage</Label>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                <Label VerticalAlignment="Center">Cap Voltage</Label>
                 <TextBox x:Name="txtCapacitorVoltage" Width="50" VerticalAlignment="center"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch">
                 <Label VerticalAlignment="Center">LED 1</Label>
-                <TextBox x:Name="txtLED1Current" Width="50" VerticalAlignment="center" HorizontalAlignment="Right" HorizontalContentAlignment="Right"/>
+                <TextBox x:Name="txtLED1Current" Width="50" VerticalAlignment="center"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
-                <Label VerticalAlignment="Center">LED2 </Label>
+            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch">
+                <Label VerticalAlignment="Center">LED 2</Label>
                 <TextBox x:Name="txtLED2Current" Width="50" VerticalAlignment="center"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
-                <Label VerticalAlignment="Center">Something Else</Label>
-                <TextBox x:Name="txtOtherVoltage" Width="50" VerticalAlignment="center"/>
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch">
                 <Label VerticalAlignment="Center">Battery Current</Label>
                 <TextBox x:Name="txtBatCurrent" Width="50" VerticalAlignment="center"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                 <Label VerticalAlignment="Center">Battery Voltage</Label>
                 <TextBox x:Name="txtBatVolt" Width="50" VerticalAlignment="center"/>
             </StackPanel>
@@ -130,13 +126,13 @@
                              IsEnabled="False" TextChanged="txtSend_TextChanged"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                        <Label>Bits</Label>
-                        <Button x:Name="btnBit0" Content="1" Click="btnBit0_Click" Background="Yellow" Width="20"/>
+                    <Label>Bits</Label>
+                    <Button x:Name="btnBit0" Content="1" Click="btnBit0_Click" Background="Yellow" Width="20"/>
                     <Button x:Name="btnBit1" Content="1" Click="btnBit1_Click" Background="IndianRed" Width="20"/>
                     <Button x:Name="btnBit2" Content="1" Click="btnBit2_Click" Background="Green" Width="20"/>
                     <Button x:Name="btnBit3" Content="1" Click="btnBit3_Click" Background="CornflowerBlue" Width="20"/>
-                    </StackPanel>
-                
+                </StackPanel>
+
 
                 <StackPanel Orientation="Horizontal">
                     <Label>Recieved</Label>
