@@ -19,7 +19,7 @@ namespace USBGuiMeadow
 {
     /// <summary>
     /// Loren Olsen
-    /// Nov 18 2021
+    /// Nov 25 2021
     /// ECET 230 
     /// Solar Panel and LED Control via USB serial protocol
     /// Interaction logic for MainWindow.xaml
@@ -126,10 +126,10 @@ namespace USBGuiMeadow
 
                     txtAN0.Text = newPacket.Substring((nextIndex(i, l)), l);    //Thermistor
                     txtAN1.Text = newPacket.Substring((nextIndex(i, l)), l);    //Solar Panel
-                    txtAN2.Text = newPacket.Substring((nextIndex(i, l)), l);
-                    txtAN3.Text = newPacket.Substring((nextIndex(i, l)), l);
-                    txtAN4.Text = newPacket.Substring((nextIndex(i, l)), l);
-                    txtAN5.Text = newPacket.Substring((nextIndex(i, l)), l);
+                    txtAN2.Text = newPacket.Substring((nextIndex(i, l)), l);    //Capacitor
+                    txtAN3.Text = newPacket.Substring((nextIndex(i, l)), l);    //LED1
+                    txtAN4.Text = newPacket.Substring((nextIndex(i, l)), l);    //LED2
+                    txtAN5.Text = newPacket.Substring((nextIndex(i, l)), l);    //Nothing
                     txtBIN.Text = newPacket.Substring((nextIndex(i, l)), l);
 
                     l = 3;  //Checksum is the last 3 digits. Shouldnt reallly need this but just in case we add to the protocol ....

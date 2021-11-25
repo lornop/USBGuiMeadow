@@ -125,8 +125,8 @@
                 <StackPanel Orientation="Horizontal">
                     <Label>Bits</Label>
                     <Button x:Name="btnBit0" Content="1" Click="btnBit0_Click" Background="Yellow" Width="20"/>
-                    <Button x:Name="btnBit1" Content="1" Click="btnBit1_Click" Background="IndianRed" Width="20"/>
-                    <Button x:Name="btnBit2" Content="1" Click="btnBit2_Click" Background="Green" Width="20"/>
+                    <Button x:Name="btnBit1" Content="1" Click="btnBit1_Click" Background="Yellow" Width="20"/>
+                    <Button x:Name="btnBit2" Content="1" Click="btnBit2_Click" Background="IndianRed" Width="20"/>
                     <Button x:Name="btnBit3" Content="1" Click="btnBit3_Click" Background="CornflowerBlue" Width="20"/>
                 </StackPanel>
 
