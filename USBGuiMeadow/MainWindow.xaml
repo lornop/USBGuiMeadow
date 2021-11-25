@@ -18,17 +18,17 @@
             <Label Width="65" Margin="0" HorizontalAlignment="Center">Packet</Label>
             <StackPanel Orientation="Horizontal">
                 <Label Width="65" >Number</Label>
-                <TextBox x:Name="txtPacketNum" VerticalAlignment="Center" Width="65"/>
+                <TextBox x:Name="txtPacketNum" VerticalAlignment="Center" Width="65" Margin="11,0,0,0"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Label Width="65" >OverFlow</Label>
-                <TextBox x:Name="txtOverFlow" VerticalAlignment="Center" Width="65"/>
+                <TextBox x:Name="txtOverFlow" VerticalAlignment="Center" Width="65" Margin="11,0,0,0"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Label Margin="0" VerticalAlignment="Center">Errors</Label>
-                <TextBox x:Name="txtChkSumError" Width="65" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="24,0,0,0"/>
+                <TextBox x:Name="txtChkSumError" Width="65" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="35,0,0,0"/>
             </StackPanel>
 
 
@@ -36,23 +36,20 @@
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                 <Label VerticalAlignment="Center" Content="Solar Voltage"/>
-                <TextBox x:Name="txtSolarVoltage" VerticalAlignment="center" Width="65"/>
+                <TextBox x:Name="txtSolarVoltage" VerticalAlignment="center" Width="50" Margin="10,0,0,0"/>
 
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                <Label VerticalAlignment="Center">Cap Voltage</Label>
-                <TextBox x:Name="txtCapacitorVoltage" Width="50" VerticalAlignment="center"/>
-            </StackPanel>
+
 
             <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch">
                 <Label VerticalAlignment="Center">LED 1</Label>
-                <TextBox x:Name="txtLED1Current" Width="50" VerticalAlignment="center"/>
+                <TextBox x:Name="txtLED1Current" Width="50" VerticalAlignment="center" Margin="50,0,0,0"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch">
                 <Label VerticalAlignment="Center">LED 2</Label>
-                <TextBox x:Name="txtLED2Current" Width="50" VerticalAlignment="center"/>
+                <TextBox x:Name="txtLED2Current" Width="50" VerticalAlignment="center" Margin="50,0,0,0"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch">
