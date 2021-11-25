@@ -40,23 +40,23 @@ namespace USBGuiMeadow
         public string GetCurrent(double an1, double shuntResistorAnalog)
         {
             double shuntAnalog = an1 - shuntResistorAnalog;
-            double dAnanlog = (shuntAnalog / ResistorValue);
+            double dAnalog = (shuntAnalog / ResistorValue);
             
             //Return the value with formats when dAnalog is positive; negative; or zero
-            return dAnanlog.ToString(" 0.0 mA; -0.0 mA; 0.0 mA");
+            return dAnalog.ToString(" 0.0 mA; -0.0 mA; 0.0 mA");
         }
 
         public string GetLEDCurrent(double an1, double shuntResistorAnalog)
         {
             double shuntAnalog = an1 - shuntResistorAnalog;
-            double dAnanlog = (shuntAnalog / ResistorValue);
-            if (dAnanlog < 0)
+            double dAnalog = (shuntAnalog / ResistorValue);
+            if (dAnalog < 0)
             {
-                dAnanlog = 0;
+                dAnalog = 0;
             }
 
             //Return the value with formats when dAnalog is positive; negative; or zero
-            return dAnanlog.ToString(" 0.0 mA; -0.0 mA; 0.0 mA");
+            return dAnalog.ToString(" 0.0 mA; -0.0 mA; 0.0 mA");
         }
     }
 }

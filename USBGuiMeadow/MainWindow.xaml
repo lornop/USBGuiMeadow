@@ -46,17 +46,27 @@
 
             <StackPanel Orientation="Horizontal">
                 <Label VerticalAlignment="Center">LED 1</Label>
-                <TextBox x:Name="txtLED1Voltage" Width="50" VerticalAlignment="center" HorizontalAlignment="Right" HorizontalContentAlignment="Right"/>
+                <TextBox x:Name="txtLED1Current" Width="50" VerticalAlignment="center" HorizontalAlignment="Right" HorizontalContentAlignment="Right"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Label VerticalAlignment="Center">LED2 </Label>
-                <TextBox x:Name="txtLED2Voltage" Width="50" VerticalAlignment="center"/>
+                <TextBox x:Name="txtLED2Current" Width="50" VerticalAlignment="center"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Label VerticalAlignment="Center">Something Else</Label>
                 <TextBox x:Name="txtOtherVoltage" Width="50" VerticalAlignment="center"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label VerticalAlignment="Center">Battery Current</Label>
+                <TextBox x:Name="txtBatCurrent" Width="50" VerticalAlignment="center"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label VerticalAlignment="Center">Battery Voltage</Label>
+                <TextBox x:Name="txtBatVolt" Width="50" VerticalAlignment="center"/>
             </StackPanel>
 
         </StackPanel>

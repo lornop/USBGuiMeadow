@@ -32,6 +32,8 @@ namespace USBGuiMeadow
 
         SerialPort serialPort = new SerialPort();
 
+        SolarCalc solarCalc = new SolarCalc();
+
         StringBuilder stringBuilderSend = new StringBuilder("###1111196");
 
 
@@ -164,24 +166,34 @@ namespace USBGuiMeadow
 
         private void DisplaySolarData(string newPacket)
         {
-            int solarADCValue = Convert.ToInt32(txtAN1.Text);
-            double solarVoltage = 0;
+            solarCalc.ParseSolarData(newPacket);
+            txtSolarVoltage.Text = solarCalc.GetVoltage(solarCalc.analogVoltage[0]);
+            txtBatVolt.Text = solarCalc.GetVoltage(solarCalc.analogVoltage[2]);
+            txtBatCurrent.Text = solarCalc.GetCurrent(solarCalc.analogVoltage[1], solarCalc.analogVoltage[2]);
+            txtLED1Current.Text = solarCalc.GetCurrent(solarCalc.analogVoltage[1], solarCalc.analogVoltage[4]);
+            txtLED2Current.Text = solarCalc.GetCurrent(solarCalc.analogVoltage[1], solarCalc.analogVoltage[3]);
 
-            solarVoltage = 5.5 / (3300.00 / solarADCValue);          //Test this to find math ????
-            //solarVoltage = 5.5 / (solarADCValue / 3300);
 
 
-            if (solarVoltage >= 1.50)
-            {
-                ButtonClicked(0, 1);
-            }
-            else
-            {
-                ButtonClicked(0, 0);
-            }
+            //I did this, Wayne got some other stuff in his vids!
+            //int solarADCValue = Convert.ToInt32(txtAN1.Text);
+            //double solarVoltage = 0;
 
-            string txtSolarVol = solarVoltage.ToString("0.000");
-            txtSolarVoltage.Text = txtSolarVol;
+            //solarVoltage = 5.5 / (3300.00 / solarADCValue);          //Test this to find math ????
+            ////solarVoltage = 5.5 / (solarADCValue / 3300);
+
+
+            //if (solarVoltage >= 1.50)
+            //{
+            //    ButtonClicked(0, 1);
+            //}
+            //else
+            //{
+            //    ButtonClicked(0, 0);
+            //}
+
+            //string txtSolarVol = solarVoltage.ToString("0.000");
+            //txtSolarVoltage.Text = txtSolarVol;
         }
 
         private void btnOpenClose_Click(object sender, RoutedEventArgs e)
