@@ -10,7 +10,9 @@ namespace USBGuiMeadow
     {
         //Field
         private static double ResistorValue;
-
+        private const int numberOfSamples = 5;
+        private static int currentIndex;
+        private double[,] slidingWindowVoltage = new double[6, numberOfSamples];
         public double[] analogVoltage = new double[6];
 
         //Constructor that takes no argument
@@ -26,8 +28,33 @@ namespace USBGuiMeadow
             for (int i = 0; i < 6; i++)
             {
                 analogVoltage[i] = Convert.ToDouble(newPacket.Substring(6+(i*4), 4));
+                analogVoltage[i] = averageVoltage(analogVoltage[i], i); 
+            }
+        }
+
+        private double averageVoltage(double voltageToAverage, int indexOfAnalog)
+        {
+            double sum;
+            if(currentIndex >= numberOfSamples)
+            {
+                currentIndex = 0;
 
             }
+
+            slidingWindowVoltage[indexOfAnalog, currentIndex] = voltageToAverage;
+            sum = 0;
+            for (int i = 0; i < numberOfSamples; i++)
+            {
+                sum += slidingWindowVoltage[indexOfAnalog, i];
+
+            }
+            if (indexOfAnalog == 5)
+            {
+                currentIndex++;
+            }
+
+            return sum / numberOfSamples;
+
         }
 
         public string GetVoltage(double analogValue)
